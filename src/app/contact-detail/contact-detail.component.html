@@ -1,0 +1,70 @@
+<div *ngIf="contact">
+  <h2 class="text-xl font-bold">Dettagli Contatto</h2>
+  <p><strong>ID:</strong> {{ contact.id }}</p>
+  <p><strong>Alias:</strong> {{ contact.alias }}</p>
+  <p><strong>Email:</strong> {{ contact.email }}</p>
+  <p><strong>Telefono:</strong> {{ contact.phoneNo }}</p>
+</div>
+
+<div *ngIf="!contact">
+  <p>Contatto non trovato</p>
+</div>
+
+<div class="p-4">
+  <h1 class="text-xl font-bold mb-4">{{ isEditing ? 'Modifica Contatto' : 'Aggiungi un Nuovo Contatto' }}</h1>
+
+  <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
+    <div class="mb-4">
+      <label for="alias" class="block text-sm font-medium text-gray-700">Nome</label>
+      <input id="alias" formControlName="alias" type="text"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+        placeholder="Inserisci il nome" />
+      <div *ngIf="contactForm.get('alias')?.invalid && contactForm.get('alias')?.touched" class="text-red-600 text-sm">
+        Il nome è obbligatorio e deve avere almeno 3 caratteri.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+      <input id="email" formControlName="email" type="email"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+        placeholder="Inserisci l'email" />
+      <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="text-red-600 text-sm">
+        L'email è obbligatoria e deve essere valida.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="phoneNo" class="block text-sm font-medium text-gray-700">Numero di telefono</label>
+      <input id="phoneNo" formControlName="phoneNo" type="text"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
+        placeholder="Inserisci il numero di telefono" />
+      <div *ngIf="contactForm.get('phoneNo')?.invalid && contactForm.get('phoneNo')?.touched"
+        class="text-red-600 text-sm">
+        Il numero di telefono è obbligatorio.
+      </div>
+    </div>
+
+    <div class="flex space-x-4">
+      @if(isEditing){<button type="submit"
+        class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700"
+        [disabled]="contactForm.invalid">
+        {{ isEditing ? 'Aggiorna Contatto' : ' Contatto' }}
+      </button>}
+
+      <button type="button" (click)="toggleEdit()"
+        class="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600">
+        {{ isEditing ? 'Annulla Modifica' : 'Modifica' }}
+      </button>
+
+      <button type="button" (click)="deleteContact()"
+        class="w-full bg-red-500 text-white font-semibold py-2 rounded-md hover:bg-red-600" *ngIf="!isEditing">
+        Elimina Contatto
+      </button>
+    </div>
+  </form>
+
+  <button (click)="goHome()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+    Torna alla Home
+  </button>
+</div>

@@ -1,0 +1,40 @@
+[
+    {
+        "id": 17279704661044417000,
+        "alias": "B",
+        "email": "a.b@de.cd",
+        "phoneNo": "3648376594238237"
+    },
+    {
+        "alias": "remo",
+        "email": "demo@test.com0",
+        "phoneNo": "03924127349sfads",
+        "lastName": "",
+        "firstName": "",
+        "id": "3128653845508187"
+    },
+    {
+        "alias": "Imola1",
+        "email": "imola@test.com",
+        "phoneNo": "123456789013",
+        "lastName": "",
+        "firstName": "",
+        "id": "2841317666486074"
+    },
+    {
+        "alias": "user1",
+        "email": "user.user@test.com1",
+        "phoneNo": "1234123",
+        "lastName": "",
+        "firstName": "",
+        "id": "27090144646971615"
+    },
+    {
+        "alias": "ramo",
+        "email": "demo@test.com1",
+        "phoneNo": "123242134",
+        "lastName": "",
+        "firstName": "",
+        "id": "00683448680887877"
+    }
+]

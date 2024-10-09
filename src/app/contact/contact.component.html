@@ -1,0 +1,28 @@
+<section>
+  <div class="flex flex-wrap justify-center mb-4">
+    <button *ngFor="let letter of alphabet" class="m-2 px-2" [ngClass]="{'selection': selectedLetter===letter }"
+      (click)="filterByLetter(letter)">{{letter}}</button>
+  </div>
+  <section>
+    <ul class="my-2">
+      <li *ngFor="let contact of filteredContacts">
+        <a [routerLink]="['/contact-detail'] " [queryParams]="{id:contact.id}">
+          <p>{{ contact.id }} </p>
+          <p>{{ contact.alias }}</p>
+          <p>{{ contact.phoneNo }}</p>
+        </a>
+      </li>
+    </ul>
+
+    @if(filteredContacts.length === 0){
+    <p>Nessun contatto trovato</p>
+    }
+  </section>
+</section>
+
+<div class="">
+  <button (click)="addContact()" class="border border-black px-1">
+    Aggiungi Contatto
+  </button>
+  <!-- <button class="border border-black px-1">Rimuovi contatto</button> -->
+</div>
